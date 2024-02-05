@@ -14,41 +14,7 @@
     <title>Bookiz</title>
     <!-- Set the website icon (favicon) to the splash image -->
     <link rel="icon" href="https://img.freepik.com/premium-photo/robot-chatbot-ai-bot-cartoon-logo-badge-design-symbol-cartoon-flat-style-illustration-generative-ai_159242-28111.jpg?w=740" type="image/png">
-  <script defer>
-    function checkIPAddress() {
-      // Specify the allowed IP address
-      const allowedIPAddress = "2409:408c:8717:1861:f089:2eab:f5c5:9cbd";
-
-      // Function to fetch user's IP address
-      function getUserIPAddress() {
-        return new Promise((resolve, reject) => {
-          // Use a free IP address API (replace with another if needed)
-          fetch('https://api64.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => resolve(data.ip))
-            .catch(error => reject(error));
-        });
-      }
-
-      // Check the user's IP address
-      getUserIPAddress()
-        .then(userIPAddress => {
-          // Check if the user's IP address matches the allowed IP
-          if (userIPAddress === allowedIPAddress) {
-            // User is allowed, display the site content
-            document.getElementById('access-message').textContent = '';
-          }
-        })
-        .catch(error => {
-          // Handle errors, e.g., if the API request fails
-          console.error('Error fetching IP address:', error);
-          document.getElementById('access-message').textContent = '';
-        });
-    }
-
-    // Call the function when the page has loaded
-    window.addEventListener('load', checkIPAddress);
-  </script>
+ 
 
     <style>
         body, html {
