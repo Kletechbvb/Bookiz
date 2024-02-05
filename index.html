@@ -14,18 +14,41 @@
     <title>Bookiz</title>
     <!-- Set the website icon (favicon) to the splash image -->
     <link rel="icon" href="https://img.freepik.com/premium-photo/robot-chatbot-ai-bot-cartoon-logo-badge-design-symbol-cartoon-flat-style-illustration-generative-ai_159242-28111.jpg?w=740" type="image/png">
-   <script>
-        // JavaScript code to set viewport width for mobile devices
-        function setViewportForMobile() {
-            if (window.innerWidth > 768) { // Change the threshold as needed
-                // Set the viewport width for mobile devices
-                document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=375, initial-scale=1');
-            }
-        }
+  <script defer>
+    function checkIPAddress() {
+      // Specify the allowed IP address
+      const allowedIPAddress = "2409:408c:8717:1861:f089:2eab:f5c5:9cbd";
 
-        // Call the function when the page is loaded
-        window.onload = setViewportForMobile;
-    </script>
+      // Function to fetch user's IP address
+      function getUserIPAddress() {
+        return new Promise((resolve, reject) => {
+          // Use a free IP address API (replace with another if needed)
+          fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => resolve(data.ip))
+            .catch(error => reject(error));
+        });
+      }
+
+      // Check the user's IP address
+      getUserIPAddress()
+        .then(userIPAddress => {
+          // Check if the user's IP address matches the allowed IP
+          if (userIPAddress === allowedIPAddress) {
+            // User is allowed, display the site content
+            document.getElementById('access-message').textContent = 'Welcome to the site!';
+          }
+        })
+        .catch(error => {
+          // Handle errors, e.g., if the API request fails
+          console.error('Error fetching IP address:', error);
+          document.getElementById('access-message').textContent = 'Error checking your IP address.';
+        });
+    }
+
+    // Call the function when the page has loaded
+    window.addEventListener('load', checkIPAddress);
+  </script>
 
     <style>
         body, html {
@@ -100,6 +123,7 @@
     <img src="https://img.freepik.com/premium-photo/robot-chatbot-ai-bot-cartoon-logo-badge-design-symbol-cartoon-flat-style-illustration-generative-ai_159242-28111.jpg?w=740" alt="Icon">
   
 </div>
+     <p id="access-message">Welcome Boss</p>
 
 <div id="webviewContainer">
     <iframe id="websiteFrame" src="https://sadiq8064.github.io/klebotc/"></iframe>
