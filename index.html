@@ -36,13 +36,13 @@
           // Check if the user's IP address matches the allowed IP
           if (userIPAddress === allowedIPAddress) {
             // User is allowed, display the site content
-            document.getElementById('access-message').textContent = 'Welcome to the site!';
+            document.getElementById('access-message').textContent = '';
           }
         })
         .catch(error => {
           // Handle errors, e.g., if the API request fails
           console.error('Error fetching IP address:', error);
-          document.getElementById('access-message').textContent = 'Error checking your IP address.';
+          document.getElementById('access-message').textContent = '';
         });
     }
 
@@ -123,7 +123,7 @@
     <img src="https://img.freepik.com/premium-photo/robot-chatbot-ai-bot-cartoon-logo-badge-design-symbol-cartoon-flat-style-illustration-generative-ai_159242-28111.jpg?w=740" alt="Icon">
   
 </div>
-     <p id="access-message">Welcome Boss</p>
+     
 
 <div id="webviewContainer">
     <iframe id="websiteFrame" src="https://sadiq8064.github.io/klebotc/"></iframe>
