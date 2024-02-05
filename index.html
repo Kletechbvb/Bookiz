@@ -14,7 +14,19 @@
     <title>Bookiz</title>
     <!-- Set the website icon (favicon) to the splash image -->
     <link rel="icon" href="https://img.freepik.com/premium-photo/robot-chatbot-ai-bot-cartoon-logo-badge-design-symbol-cartoon-flat-style-illustration-generative-ai_159242-28111.jpg?w=740" type="image/png">
-  
+   <script>
+        // JavaScript code to set viewport width for mobile devices
+        function setViewportForMobile() {
+            if (window.innerWidth > 768) { // Change the threshold as needed
+                // Set the viewport width for mobile devices
+                document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=375, initial-scale=1');
+            }
+        }
+
+        // Call the function when the page is loaded
+        window.onload = setViewportForMobile;
+    </script>
+
     <style>
         body, html {
             margin: 0;
