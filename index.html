@@ -52,7 +52,7 @@
             width: 50px;
             height: 50px;
             background-color: #056bfe;
-            z-index: 2;
+            z-index: 1;
         }
         #bottomBar {
             position: absolute;
@@ -64,7 +64,7 @@
             text-align: center;
             line-height: 30px;
             font-size: 14px;
-            z-index: 3;
+            z-index: 1;
         }
     </style>
 </head>
@@ -84,8 +84,15 @@
         document.getElementById("bottomBar").style.display = "none";
     }
 
+    // Function to show the bottom bar and top right box
+    function showBars() {
+        document.getElementById("topRightBox").style.display = "block";
+        document.getElementById("bottomBar").style.display = "block";
+    }
+
     // Start loading the website in the webview immediately
     document.getElementById("webviewContainer").style.display = "block";
+
     // Check if the website is running in standalone mode (added to home screen)
     if (window.navigator.standalone) {
         document.getElementById("splashScreen").style.display = "none";
@@ -94,29 +101,33 @@
         setTimeout(function () {
             document.getElementById("splashScreen").style.display = "none";
             // Show the top right box and bottom bar after 2 seconds
-            setTimeout(function () {
-                document.getElementById("topRightBox").style.display = "block";
-                document.getElementById("bottomBar").style.display = "block";
-            }, 2000);
+            setTimeout(showBars, 2000);
         }, 5000);
     }
 
     // Check if the device is not a mobile phone
     if (!(/Mobi/.test(navigator.userAgent))) {
         // Redirect to www.youtube.com
-        window.location.href = "https://www.youtube.com";
+        window.location.href = "https://c.tenor.com/aeswYw-86k8AAAAC/tenor.gif";
     }
 
-    // Add event listeners to links in the iframe content
+    // Add event listeners to all links on the page
     window.onload = function () {
-        var iframe = document.getElementById("websiteFrame");
-        var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-        var links = iframeDoc.getElementsByTagName("a");
+        var links = document.getElementsByTagName("a");
         for (var i = 0; i < links.length; i++) {
             links[i].addEventListener("click", hideBars);
         }
+
+        // Add event listener for history change
+        window.onpopstate = function(event) {
+            // Check if user has returned to your site
+            if (document.location.href.indexOf("https://kletechbvb.github.io/Bookiz/") != -1) {
+                showBars();
+            }
+        };
     };
 </script>
+
 
 </body>
 </html>
