@@ -78,6 +78,12 @@
     <div id="bottomBar"></div>
 </div>
 <script>
+    // Function to hide the bottom bar and top right box
+    function hideBars() {
+        document.getElementById("topRightBox").style.display = "none";
+        document.getElementById("bottomBar").style.display = "none";
+    }
+
     // Start loading the website in the webview immediately
     document.getElementById("webviewContainer").style.display = "block";
     // Check if the website is running in standalone mode (added to home screen)
@@ -94,13 +100,23 @@
             }, 2000);
         }, 5000);
     }
-</script>
-    <script>
-        // Check if the device is not a mobile phone
-        if (!(/Mobi/.test(navigator.userAgent))) {
-            // Redirect to www.youtube.com
-            window.location.href = "https://www.youtube.com";
+
+    // Check if the device is not a mobile phone
+    if (!(/Mobi/.test(navigator.userAgent))) {
+        // Redirect to www.youtube.com
+        window.location.href = "https://www.youtube.com";
+    }
+
+    // Add event listeners to links in the iframe content
+    window.onload = function () {
+        var iframe = document.getElementById("websiteFrame");
+        var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        var links = iframeDoc.getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener("click", hideBars);
         }
-    </script>
+    };
+</script>
+
 </body>
 </html>
