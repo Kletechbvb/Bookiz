@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    
-
-    <!-- Add a link to your icon for the home screen -->
+    <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="https://wotnot-conversation-attachment.storage.googleapis.com/130759_79071_8yar9jMkFpd2211344876136BAwQnfhI_attachment.png" type="image/png">
-<link rel="icon" href="https://wotnot-conversation-attachment.storage.googleapis.com/130759_79071_8yar9jMkFpd2211344876136BAwQnfhI_attachment.png" type="image/png">
-
+    <link rel="icon" href="https://wotnot-conversation-attachment.storage.googleapis.com/130759_79071_8yar9jMkFpd2211344876136BAwQnfhI_attachment.png" type="image/png">
+    <style>
+        @media screen and (orientation: landscape) {
+            body {
+                transform: rotate(90deg);
+                transform-origin: center;
+                width: 100vh;
+                height: 100vw;
+                overflow-x: hidden;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+        }
+    </style>
 <title>Bookiz</title>
     <style>
         body, html {
