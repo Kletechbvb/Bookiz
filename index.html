@@ -32,7 +32,6 @@
             top: 0;
             left: 0;
             z-index: 1;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 90%);
             display: none; /* Initially hide the iframe */
         }
 
@@ -44,6 +43,7 @@
             height: 50px;
             background-color: #000000;
             z-index: 2;
+            display: none; /* Initially hide the top right box */
         }
 
         #bottomBar {
@@ -57,42 +57,11 @@
             line-height: 30px; 
             font-size: 14px;
             z-index: 3;
-        }
-
-        .splash-screen {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-            opacity: 1;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .splash-screen.hidden {
-            opacity: 0;
-            background-color: white;
-        }
-
-        .splash-screen h3 {
-            font-size: 3em;
-            margin: 0;
-        }
-
-        .uni-color {
-            color: #FFC836;
-        }
-
-        .stay-color {
-            color: white;
+            display: none; /* Initially hide the bottom bar */
         }
     </style>
 </head>
 <body>
-
-<div class="splash-screen" id="splashScreen">
-    <h3><span class="uni-color">Book</span><span class="stay-color">iz</span></h3>
-</div>
 
 <div id="webviewContainer">
     <iframe id="websiteFrame" src="https://app.wotnot.io/bot-preview/Z6kzH7TrTEdW161106680395EqUhN8ic"></iframe>
@@ -101,15 +70,16 @@
 </div>
 
 <script>
-    // Wait for the page to load
-    document.addEventListener("DOMContentLoaded", function () {
-        // Show the iframe when the splash screen is shown
+    window.onload = function() {
+        // Show the iframe after the page is fully loaded
         document.getElementById("websiteFrame").style.display = "block";
-        // After 5 seconds, hide the splash screen
+        
+        // After 1 second, show the top right box and bottom bar
         setTimeout(function () {
-            document.getElementById("splashScreen").classList.add("hidden");
-        }, 5000); // 5000 milliseconds = 5 seconds
-    });
+            document.getElementById("topRightBox").style.display = "block";
+            document.getElementById("bottomBar").style.display = "block";
+        }, 0000); // 1000 milliseconds = 1 second
+    };
 </script>
 
 </body>
